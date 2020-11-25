@@ -1,0 +1,45 @@
+$ python manage.py makemigrations
+
+$ python manage.py migrate
+
+$ python manage.py shell
+
+>>> from newapp.model import Use
+
+Query: Create 3 new users:
+>>> User.objects.create(firstname ="reham", lastname = "alanazi", email ="reham@gmail.com", age = 5) 
+<User: User object (1)>
+>>> User.objects.create(firstname ="sara", lastname = "alanazi", email ="sara@gmail.com", age = 17)  
+<User: User object (2)>
+>>> User.objects.create(firstname ="ragad", lastname = "alanazi", email ="ragad@gmail.com", age = 18)
+<User: User object (3)>
+>>> 
+
+Query: Retrieve all the users:
+
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object (3)>]>
+>>> 
+
+Query: Retrieve the first user:
+
+>>> User.objects.first()
+<User: User object (1)>
+
+Query: Retrieve the last user:
+>>> User.objects.last()
+<User: User object (3)>
+
+Query: Change the user with id=3 so their last name is Pancakes.
+>>> c = User.objects.get(id = 3) 
+>>> c.lastname = "Pancakes"
+>>> c.save()
+
+Query: Get all the users, sorted by their first name:
+>>> User.objects.all().order_by("firstname") 
+<QuerySet [<User: User object (3)>, <User: User object (1)>]>
+
+BONUS Query: Get all the users, sorted by their first name in descending order:
+>>> User.objects.all().order_by("-firstname") 
+<QuerySet [<User: User object (1)>, <User: User object (3)>]>
+>>> 

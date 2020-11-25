@@ -1,0 +1,78 @@
+>>> from newapp.models import *
+>>> Dojo.objects.create(name ="dojo1", city = "melbourne", state ="vi")
+<Dojo object: Name = dojo1>
+>>> Dojo.objects.create(name ="dojo2", city = "Sydney", state ="ae")     
+<Dojo object: Name = dojo2>
+>>> Dojo.objects.create(name ="dojo3", city = "Edilied", state ="vi")   
+<Dojo object: Name = dojo3>
+>>> 
+
+
+>> dojo_to_delete = Dojo.objects.get(id=1)
+>>> dojo_to_delete.delete()
+(1, {'newapp.Ninja': 0, 'newapp.Dojo': 1})
+
+>>> dojo_to_delete = Dojo.objects.get(id=2)
+>>> dojo_to_delete.delete()
+(1, {'newapp.Ninja': 0, 'newapp.Dojo': 1})
+
+>>> dojo_to_delete = Dojo.objects.get(id=3) 
+>>> dojo_to_delete.delete()
+(1, {'newapp.Ninja': 0, 'newapp.Dojo': 1})
+>>> 
+
+
+
+>>> this_dojo = Dojo.objects.get(id=4) 
+>>> Ninja.objects.create(firstname ="dojo3", lastname = "Edilied", dojo =this_dojo) 
+<Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4)
+>>> Ninja.objects.create(firstname ="Nija4", lastname = "Edilied", dojo =this_dojo)
+<Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4) 
+>>> Ninja.objects.create(firstname ="Nija5", lastname = "Edilied", dojo =this_dojo) 
+<Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4) 
+ 
+>>> this_dojo = Dojo.objects.get(id=5) 
+>>> Ninja.objects.create(firstname ="Ninja2", lastname = "qqqqqq", dojo =this_dojo)
+<Student object: Name = qqqqqq>, firstname= qqqqqq, dojo =  Dojo object (5) 
+>>> Ninja.objects.create(firstname ="Ninja6", lastname = "qqqqqq", dojo =this_dojo) 
+<Student object: Name = qqqqqq>, firstname= qqqqqq, dojo =  Dojo object (5) 
+>>> Ninja.objects.create(firstname ="Ninja7", lastname = "qqqqqq", dojo =this_dojo) 
+<Student object: Name = qqqqqq>, firstname= qqqqqq, dojo =  Dojo object (5) 
+>>> 
+>>> this_dojo = Dojo.objects.get(id=6) 
+>>> Ninja.objects.create(firstname ="Ninja3", lastname = "eeeeeee", dojo =this_dojo) 
+<Student object: Name = eeeeeee>, firstname= eeeeeee, dojo =  Dojo object (6) 
+>>> Ninja.objects.create(firstname ="Ninja8", lastname = "eeeeeee", dojo =this_dojo) 
+<Student object: Name = eeeeeee>, firstname= eeeeeee, dojo =  Dojo object (6) 
+>>> Ninja.objects.create(firstname ="Ninja9", lastname = "eeeeeee", dojo =this_dojo) 
+<Student object: Name = eeeeeee>, firstname= eeeeeee, dojo =  Dojo object (6) 
+>>> 
+
+
+>>> this_dojo = Dojo.objects.get(id=4) 
+>>> this_dojo.Students.all()
+<QuerySet [<Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4) , <Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4) , <Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4) ]>
+>>> 
+>> this_dojo = Dojo.objects.get(id=5)  
+>>> this_dojo.Students.all()
+<QuerySet [<Student object: Name = qqqqqq>, firstname= qqqqqq, dojo =  Dojo object (5) , <Student object: Name = qqqqqq>, firstname= qqqqqq, dojo =  Dojo object (5) , <Student object: Name = qqqqqq>, firstname= qqqqqq, dojo =  Dojo object (5) ]>
+>>> this_dojo.Students.all()
+
+>>> this_dojo = Dojo.objects.get(id=6)                         
+>>> this_dojo.Students.all()
+<QuerySet [<Student object: Name = eeeeeee>, firstname= eeeeeee, dojo =  Dojo object (6) , <Student object: Name = eeeeeee>, firstname= eeeeeee, dojo =  Dojo object (6) , <Student object: Name = eeeeeee>, firstname= eeeeeee, dojo =  Dojo object (6) ]>
+>>
+
+>>> this_dojo = Dojo.objects.first()
+>>> this_dojo.Students.all()
+<QuerySet [<Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4) , <Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4) , <Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4) ]>
+>>> 
+
+>>> this_dojo = Dojo.objects.last()    
+>>> this_dojo.Students.all()
+<QuerySet []>
+
+
+>>> this_dojo.Students.last()
+<Student object: Name = Edilied>, firstname= Edilied, dojo =  Dojo object (4) 
+>>> 

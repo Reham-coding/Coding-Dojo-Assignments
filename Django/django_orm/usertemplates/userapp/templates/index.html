@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+    <script src="{% static 'js/script.js' %}"></script>
+    <title>Index</title>
+    
+     <Style>
+
+
+     </Style>
+      
+</head>
+<body>
+
+
+
+
+<div class="top"></div>
+   
+
+<div class = container1>
+
+    <form action='add' method='post'>
+        {% csrf_token %}
+        <div class="container">
+          <h1>Add User </h1>
+          <input type="text" placeholder="Enter name" name="firstname" id="" required>
+          <input type="text" placeholder="Enter lastname" name="lastname" id="" required>
+          <input type="text" placeholder="Enter Email" name="email" id="email" required>
+          <input type="text" placeholder="Enter age" name="age" id="" required>
+      
+          
+      
+          <button type="submit" class="registerbtn">Register</button>
+        </div>
+      </form>
+    
+      <p>Stored Users:</p>                                          
+      <table class="table">
+        <thead>
+          <tr>
+            <th  scope="row">#</th>
+            <th>Firstname</th>
+             <th>lastname</th>
+             <th>email</th>
+             <th>age</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in objs %}
+    <tr> 
+      <td>{{ item.id }}</td>
+         <td>{{ item.firstname }}</td>
+         <td>{{ item.lastname }}</td>
+         <td>{{ item.email }}</td>
+         <td>{{ item.age }}</td>
+    </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+       
+    
+    
+<div class =bottom> </div>
+</div>
+
+</div>
+
+
+
+</body>
+</html>
